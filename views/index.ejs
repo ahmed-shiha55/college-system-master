@@ -1,0 +1,145 @@
+<%- include('parts/head')%> <%- include('parts/navbar')%>
+
+<div class="home pt-5 mt-5 mb-5">
+<div class="container">
+    <% if(type=="doctor") {%>
+    <h1>أهلاً بك يا  دكتور <span style="color: rgb(92, 146, 255);"><%= name %></span></h1>
+    <img width="70%"  style="display:block; margin: 50px auto ;" src="https://i.pinimg.com/originals/2a/53/65/2a53651a35816f499270d8275fd5318f.gif" alt="img">
+    <% } else if(type=="student") {%>
+    <h1>أهلاً بك يا بشمهندس <span style="color: rgb(92, 146, 255);"><%= name %></span></h1>
+    <img width="70%"  style="display:block; margin: 50px auto ;" src="https://i.pinimg.com/originals/ef/16/e4/ef16e4e68b0d3cb81e6bb8a8c3258d7e.gif" alt="img">
+
+    <% }if(type=="admin"){ %>
+    <h1>أهلاً بك يا أستاذ  <span style="color: rgb(92, 146, 255);"><%= name %></span></h1>
+    <img width="70%"  style="display:block; margin: 50px auto ;" src="https://i.pinimg.com/originals/bd/e9/7a/bde97a2bb426f625fc9810ab662b74b3.gif" alt="img">
+    <% } %>
+    
+    
+    
+    <script type="text/javascript">
+        $(document).ready(function () {
+                        
+                const Toast = Swal.mixin({
+                toast: true,
+                position: 'bottom-start',
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+                })
+                Toast.fire({
+                icon: 'success',
+                title: 'أهلاً <%= name %> '
+                })
+          
+        })
+      </script>
+
+        <% if(successDownloadAbsenceFileByAdmin){ %>
+            <script type="text/javascript">
+                $(document).ready(function () {
+                                
+                        const Toast = Swal.mixin({
+                        toast: true,
+                        position: 'bottom-start',
+                        showConfirmButton: false,
+                        timer: 3000,
+                        timerProgressBar: true,
+                        didOpen: (toast) => {
+                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                        }
+                        })
+                        Toast.fire({
+                        icon: 'success',
+                        title: '<%= successDownloadAbsenceFileByAdmin %> '
+                        })
+                
+                })
+            </script>
+        <% } %>
+        <% if(failedDownloadAbsenceFileByAdmin){ %>
+            <script type="text/javascript">
+                $(document).ready(function () {
+                                
+                        const Toast = Swal.mixin({
+                        toast: true,
+                        position: 'bottom-start',
+                        showConfirmButton: false,
+                        timer: 3000,
+                        timerProgressBar: true,
+                        didOpen: (toast) => {
+                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                        }
+                        })
+                        Toast.fire({
+                        icon: 'error',
+                        title: '<%= failedDownloadAbsenceFileByAdmin %> '
+                        })
+                
+                })
+            </script>
+        <% } %>
+
+
+
+        <% if(validationErr){ %>
+            <script type="text/javascript">
+                $(document).ready(function () {
+                                
+                        const Toast = Swal.mixin({
+                        toast: true,
+                        position: 'bottom-start',
+                        showConfirmButton: false,
+                        timer: 3000,
+                        timerProgressBar: true,
+                        didOpen: (toast) => {
+                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                        }
+                        })
+                        Toast.fire({
+                        icon: 'error',
+                        title: '<%= validationErr.msg %> '
+                        })
+                
+                })
+            </script>
+        <% } %>
+
+
+
+
+        <% if(uploadImageStatus){ %>
+            
+            <script type="text/javascript">         
+                $(document).ready(function () {
+
+                        const Toast = Swal.mixin({
+                        toast: true,
+                        position: 'bottom-start',
+                        showConfirmButton: false,
+                        timer: 3000,
+                        timerProgressBar: true,
+                        didOpen: (toast) => {
+                            toast.addEventListener('mouseenter', Swal.stopTimer)
+                            toast.addEventListener('mouseleave', Swal.resumeTimer)
+                        }
+                        })
+                        Toast.fire({
+                        icon: "success",
+                        title: '<%= uploadImageStatus %> '
+                        })
+                })
+            </script>
+        <% } %>
+
+</div>
+</div>
+
+
+<%- include('parts/footer')%>
